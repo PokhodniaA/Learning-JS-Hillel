@@ -1,4 +1,4 @@
-function copy(buffer) {   
+function copy(buffer) {
     this[buffer] = this.result;
     return this
 }
@@ -14,8 +14,17 @@ function doFunction(func, x, y) {
 }
 
 function target(property) {
-    
-}
+    var temp = {
+        result: undefined,
+        copy: copy,
+        clear: clear,
+        doFunction: doFunction,
+        target: target,
+    }
+    this[property] = temp.result;
+    return temp
+} // замыкание ?
+
 
 function sum(x, y) {
     return x + y
@@ -42,4 +51,4 @@ var obj = {
 
 // console.log(obj.doFunction(sum, 2, 3).doFunction(sub, 3, 3).copy('key').doFunction(sub, 3, 3));
 console.log(obj.doFunction(sum, 2, 4).copy('some_name').clear().target('another_some_name').doFunction(mul, 6, 3));
-console.log(obj.result);
+console.log(obj);
