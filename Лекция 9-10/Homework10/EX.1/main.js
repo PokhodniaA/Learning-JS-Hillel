@@ -15,13 +15,13 @@ function doFunction(func, x, y) {
 
 function target(property) {
     var temp = {
-        result: undefined,
         copy: copy,
         clear: clear,
         doFunction: doFunction,
         target: target,
     }
-    this[property] = temp.result;
+    this[property] = temp.result
+
     return temp
 } // замыкание ?
 
@@ -39,7 +39,7 @@ function diff(x, y) {
 }
 
 function sub(x, y) {
-    return x / y
+    return(y == 0) ? 'Ошибка' : x / y;
 }
 
 var obj = {
