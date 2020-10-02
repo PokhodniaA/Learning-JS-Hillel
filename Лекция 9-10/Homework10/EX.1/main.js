@@ -4,26 +4,22 @@ function copy(buffer) {
 }
 
 function clear() {
-    this.result = 0
+    (this.hasOwnProperty('property')) ? this[this.property] = null :
+        this.result = null;
     return this
 }
 
 function doFunction(func, x, y) {
-    this.result = func(x, y)
+    (this.hasOwnProperty('property')) ? this[this.property] = func(x, y) :
+        this.result = func(x, y);
     return this
 }
 
 function target(property) {
-    var temp = {
-        copy: copy,
-        clear: clear,
-        doFunction: doFunction,
-        target: target,
-    }
-    this[property] = temp.result
-
-    return temp
-} // замыкание ?
+    this.property = property;
+    this[property] = undefined;
+    return this
+}
 
 
 function sum(x, y) {
@@ -39,7 +35,7 @@ function diff(x, y) {
 }
 
 function sub(x, y) {
-    return(y == 0) ? 'Ошибка' : x / y;
+    return (y == 0) ? 'Ошибка' : x / y;
 }
 
 var obj = {
@@ -49,6 +45,5 @@ var obj = {
     target: target,
 }
 
-// console.log(obj.doFunction(sum, 2, 3).doFunction(sub, 3, 3).copy('key').doFunction(sub, 3, 3));
-console.log(obj.doFunction(sum, 2, 4).copy('some_name').clear().target('another_some_name').doFunction(mul, 6, 3));
+obj.doFunction(sum, 2, 4).copy('some_name').clear().target('another_some_name').doFunction(mul, 6, 3)
 console.log(obj);
