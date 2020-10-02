@@ -4,7 +4,7 @@ function toCamelCase(str) {
         if (str[i] !== '_') {
             newStr += str[i]
         } else {
-            newStr += str[i+1].toUpperCase();
+            newStr += str[i + 1].toUpperCase();
             i++
         }
     }

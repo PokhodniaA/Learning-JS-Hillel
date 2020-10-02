@@ -1,6 +1,6 @@
 function inArray(text, array) {
-    for(var str of array){
-        if(str.includes(text)){
+    for (var str of array) {
+        if (str.includes(text)) {
             return true
         }
     }
