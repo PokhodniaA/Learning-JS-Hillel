@@ -6,6 +6,9 @@
 // 3. modified
 // 4. commited
 
+// git fetch -- скачивает служебную информацию
+
+// ---------rebase-----------
 
 
 
@@ -14,6 +17,8 @@
 
 
 
+
+// codewars
 
 // Сделать буквы заглавными
 // String.prototype.toJadenCase = function () {
