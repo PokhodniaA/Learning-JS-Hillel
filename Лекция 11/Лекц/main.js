@@ -55,3 +55,51 @@
 
 // console.log(rowSumOddNumbers(1));
 // console.log(rowSumOddNumbers(42));
+
+
+// function validParentheses(parens) {
+//     //TODO 
+//     if(typeof parens !== 'object'){
+//         var array = parens.split('')
+//     }
+    
+
+//     function cycle(array) {
+//         for (i = 0; i < array.length; i++) {
+//             item = array[i]
+//             if (item == '(' & array[i + 1] == ')') {
+//                 array.splice(i, 2, '')
+//             }
+
+//             if (i == array.length - 1) {
+//                 return array
+//             }
+//         }
+//     }
+//     cycle(array);
+//     var row = array.join('')
+
+//     return (!row)
+// }
+// console.log(validParentheses("()"), ' = true');
+// console.log(validParentheses("())"), ' = false');
+
+// (()())(())()()() 
+// ()(())()()()()(())()()()()(())()()()()()
+
+
+// split по '()' в рекурсии
+
+function validParentheses(parens) {
+    //TODO 
+    // debugger
+    if(parens == ''){
+        return true
+    } else if (parens[0] == ')' || parens[parens.length - 1] == '('){
+        return false;
+    }
+    return validParentheses(parens.split('()').join(''))
+}
+// console.log(validParentheses("()"), ' = true');
+// console.log(validParentheses("())"), ' = false');
+console.log(validParentheses("()(()()(()"), ' = true');
