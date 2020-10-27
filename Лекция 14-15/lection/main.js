@@ -33,5 +33,38 @@ HTMLElement.prototype.render = function () {
 HTMLElement.prototype.name = 'hello';
 
 
+// Инкапсуляция (get, set)
+
+function Slider(pictures) {
+    var _index = 0;
+    var _pictures = pictures || sendAjax(); // _pict -- приватное переменная
+    var _size = pictures.length;
+
+    function sendAjax() {
+
+    }
+
+    this.getterIndex = function () {
+        return index;
+    }
+
+    this.setterIndex = function (value) {
+        if (value && (value > 0 && value < _size)) {
+            _index = value;
+        }
+    }
+}
 
 
+
+Slider.prototype.next = function () {
+    var nextIndex = this.getterIndex() + 1;
+    this.setterIndex(nextIndex)
+}
+
+Slider.logs = [];//статический метод. хранит данный общие для всех экземпляров. Использывает ф-ю как объект.
+
+Slider.printLogs = function () {
+
+}
+console.log(Slider);
