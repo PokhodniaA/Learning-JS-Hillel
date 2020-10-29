@@ -82,25 +82,24 @@ var person = new Person('Andrey', 5, 4);
 
 field.renderField();
 person.start();
-field.renderField();
-person.go('top', 2);
-person.go('left', 3);
-field.renderField();
-person.resetPosition();
-field.renderField();
-field.clearField();
-field.renderField();
+// field.renderField();
+// person.go('top', 2);
+// person.go('left', 3);
+// field.renderField();
+// person.resetPosition();
+// field.renderField();
+// field.clearField();
+// field.renderField();
 
 
 
 // -------------Вопросы------------
 
-// 1. Правильное ли наследование Person.protorype от field или лучше передавать объект в метод(*1*)
 // 2. Можно ли как-то получить значения позици Х и У person без передавания объекта (*2*)
 // 
-// Field.prototype.clearField = function () { //(--2--)
+// Field.prototype.clearField = function () { 
 // for (var i = 0; i < arguments.length; i++) {
 //     var object = arguments[i];
 //     this.grid[object.positionY][object.positionX] = 1;
-// }
+//  }
 // }
