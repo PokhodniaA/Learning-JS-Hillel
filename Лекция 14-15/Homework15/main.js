@@ -22,11 +22,11 @@ Field.prototype.renderField = function () {
     document.write('<hr>');
 }
 
-Field.prototype.clearField = function () { //(*2*)
-    this.grid.forEach(function (item, index, array) {
-        var element = item.indexOf(1);
-        if (element >= 0) { array[index][element] = 0 }
-    })
+Field.prototype.clearField = function () { // передаем объекты, которые хотим очистить
+    for (var i = 0; i < arguments.length; i++) {
+        var object = arguments[i];
+        this.grid[object.positionY][object.positionX] = 0;
+    }
 }
 
 Field.prototype.changeSize = function (newX, newY) {
@@ -82,24 +82,26 @@ var person = new Person('Andrey', 5, 4);
 
 field.renderField();
 person.start();
-// field.renderField();
-// person.go('top', 2);
-// person.go('left', 3);
-// field.renderField();
-// person.resetPosition();
-// field.renderField();
-// field.clearField();
-// field.renderField();
+field.renderField();
+person.go('bottom', 2);
+person.go('right', 3);
+field.renderField();
+person.resetPosition();
+field.renderField();
+field.clearField(person);
+field.renderField();
 
 
 
-// -------------Вопросы------------
+// -------------Варианты решения ------------
 
-// 2. Можно ли как-то получить значения позици Х и У person без передавания объекта (*2*)
+// 1. Удаляем все объекты на поле(медленно)
 // 
-// Field.prototype.clearField = function () { 
-// for (var i = 0; i < arguments.length; i++) {
-//     var object = arguments[i];
-//     this.grid[object.positionY][object.positionX] = 1;
-//  }
+// Field.prototype.clearField = function () { //(*2*)
+//     this.grid.forEach(function (item, index, array) {
+//         item.forEach(function (element, i) {
+//             if (element >= 0) { array[index][i] = 0 }
+//         })
+//     })
 // }
+// 
