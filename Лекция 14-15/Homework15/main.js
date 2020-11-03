@@ -69,7 +69,7 @@ Person.prototype.resetPosition = function () {
     this.grid[this.positionY][this.positionX] = 0;
     this.positionY = this.defaultY
     this.positionX = this.defaultX
-    this.grid[this.positionY][this.positionX] = 1;
+    this.start();
 }
 
 
