@@ -22,10 +22,18 @@ Field.prototype.renderField = function () {
     document.write('<hr>');
 }
 
-Field.prototype.clearField = function () { // передаем объекты, которые хотим очистить
-    for (var i = 0; i < arguments.length; i++) {
-        var object = arguments[i];
-        this.grid[object.positionY][object.positionX] = 0;
+Field.prototype.clearField = function () { // передаем объекты, которые хотим очистить, если их нет чистим всё поле
+    if (arguments.length > 0) {
+        for (var i = 0; i < arguments.length; i++) {
+            var object = arguments[i];
+            this.grid[object.positionY][object.positionX] = 0;
+        }
+    } else {
+        this.grid.forEach(function (item, index, array) {
+            item.forEach(function (element, i) {
+                if (element >= 0) { array[index][i] = 0 }
+            })
+        })
     }
 }
 
@@ -90,18 +98,3 @@ person.resetPosition();
 field.renderField();
 field.clearField(person);
 field.renderField();
-
-
-
-// -------------Варианты решения ------------
-
-// 1. Удаляем все объекты на поле(медленно)
-// 
-// Field.prototype.clearField = function () { //(*2*)
-//     this.grid.forEach(function (item, index, array) {
-//         item.forEach(function (element, i) {
-//             if (element >= 0) { array[index][i] = 0 }
-//         })
-//     })
-// }
-// 
