@@ -22,7 +22,7 @@ Field.prototype.renderField = function () {
     document.write('<hr>');
 }
 
-Field.prototype.clearField = function () { // передаем объекты, которые хотим очистить, если их нет чистим всё поле
+Field.prototype.clearField = function () { // передаем объекты, которые хотим очистить, если их нет - чистим всё поле
     if (arguments.length > 0) {
         for (var i = 0; i < arguments.length; i++) {
             var object = arguments[i];
@@ -31,7 +31,7 @@ Field.prototype.clearField = function () { // передаем объекты, �
     } else {
         this.grid.forEach(function (item, index, array) {
             item.forEach(function (element, i) {
-                if (element >= 0) { array[index][i] = 0 }
+                if (element > 0) { array[index][i] = 0 }
             })
         })
     }
