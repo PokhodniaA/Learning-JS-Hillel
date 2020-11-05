@@ -5,13 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homewerk 17</title>
+    <style>
+        .flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input {
+            border: 4px solid black;
+            margin: 10px 0;
+        }
+
+        textarea {
+            border: 2px solid red;
+            resize: none
+        }
+    </style>
 </head>
 
 <body>
-    <input type="text">
-    <input type="text">
-    <input type="text">
-    <textarea cols="30" rows="10"></textarea>
+    <div class="flex">
+        <input type="text">
+        <input type="text">
+        <input type="text">
+        <textarea cols="30" rows="10" readonly></textarea>
+    </div>
 </body>
 
 <script src="main.js"></script>

@@ -1,8 +1,14 @@
 let inputs = document.querySelectorAll('input');
 let textArea = document.querySelector('textarea');
+
 setInterval(() => {
-    [].forEach.call(inputs, (input) => {
+    let string = [].reduce.call(inputs, (previous, input) => {
         let value = input.value;
-        if (value) { textArea.textContent += `${value}, ` };
-    });
-}, 5000)
+        if (value) {
+            return (previous) ? previous += `, ${value}` : previous += `${value}`;
+        } else {
+            return previous
+        }
+    }, '');
+    textArea.textContent = string;
+}, 2000)
