@@ -12,4 +12,6 @@ const elements = document.querySelectorAll('div') //выбираем все. Л�
 console.log(elements);
 console.log(elements[0].className = 'item');
 
+// block.style.color = 'red';
+
 
