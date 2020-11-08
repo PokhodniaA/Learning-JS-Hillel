@@ -1,0 +1,36 @@
+function getCommission() {
+    let value = slider.value;
+    if (value < 20) {
+        return value * 0.02;
+    } else if (value >= 20 && value < 50) {
+        return value * 0.04;
+    } else if (value >= 50 && value < 75) {
+        return value * 0.06;
+    } else if (value >= 75 && value <= 100) {
+        return value * 0.08;
+    }
+}
+
+function changeDiagram() {
+    let comission = getCommission();
+    diagramGreen.style.height = `${slider.value * 2}px`
+    diagramRed.style.height = `${comission * 2}px`
+}
+
+
+let slider = document.querySelector('#range'),
+    number = document.querySelector('#number'),
+    diagramGreen = document.querySelector('#green'),
+    diagramRed = document.querySelector('#red');
+
+changeDiagram()
+
+slider.onchange = function () {
+    number.value = slider.value;
+    changeDiagram()
+}
+
+number.onchange = function () {
+    slider.value = number.value;
+    changeDiagram()
+}

@@ -4,11 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise 1</title>
+    <title>Calc</title>
+    <style>
+        #diagram {
+            margin: 20px 50px;
+            height: 216px;
+            width: 50px;
+            border: 2px solid black;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        #red {
+            background-color: red;
+        }
+
+        #green {
+            background-color: green;
+        }
+    </style>
 </head>
 
 <body>
+    <input type="range" id="range" min="0" max="100">
+    <input type="number" id="number" min="0" max="100" value="50">
+
+    <div id="diagram">
+        <div id="red"></div>
+        <div id="green"></div>
+    </div>
 
 </body>
+<script src="main.js"></script>
 
 </html>

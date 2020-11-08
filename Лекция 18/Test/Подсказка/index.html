@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подсказка</title>
+    <style>
+        .tooltip {
+            position: fixed;
+            padding: 10px 20px;
+            border: 1px solid #b3c9ce;
+            border-radius: 4px;
+            text-align: center;
+            font: italic 14px/1.3 sans-serif;
+            color: #333;
+            background: #fff;
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, .3);
+        }
+    </style>
+</head>
+
+<body>
+    <button data-tooltip="эта подсказка длиннее, чем элемент">Короткая кнопка</button>
+    <button data-tooltip="HTML<br>подсказка">Ещё кнопка</button>
+</body>
+<script src="main.js"></script>
+
+</html>

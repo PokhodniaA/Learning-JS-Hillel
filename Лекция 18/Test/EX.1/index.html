@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 1</title>
+
+    <style>
+        input,
+        select {
+            height: 20px;
+        }
+
+        .block {
+            display: flex;
+            justify-content: space-between;
+            width: 30%;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .redblock {
+            width: 30px;
+            height: 100px;
+            background-color: red;
+            display: flex;
+            align-self: flex-end;
+        }
+
+        .greenblock {
+            width: 30px;
+            height: 100px;
+            background-color: greenyellow;
+            display: flex;
+            align-self: flex-end;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Депозитный калькулятор</h2>
+        <div class="block">
+            <p>Первоначальный депозит</p>
+            <input type="text" id="initial" value="10000">
+        </div>
+
+        <div class="block">
+            <p>Срок вклада?</p>
+            <select id="year">
+                <option value="3">3</option>
+                <option value="6">6</option>
+                <option value="12">12</option>
+            </select>
+        </div>
+
+        <div class="block">
+            <p>Годовая процентная ставка</p>
+            <input type="text" id="interest" value="5">
+        </div>
+
+        <div class="block">
+            <div class="column">
+                <h4 class="was">was</h4>
+                <div class="redblock"></div>
+            </div>
+
+            <div class="column">
+                <h4 class="will">will</h4>
+                <div class="greenblock"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="main.js"></script>
+
+</html>
