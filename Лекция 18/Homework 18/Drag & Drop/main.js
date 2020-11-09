@@ -29,12 +29,12 @@ const element = document.querySelector('.box'),
     heightElement = element.clientWidth;
 
 
-document.onclick = function (event) {
-    let [X, Y] = getPosition(event);
-    console.log(X, 'left'), console.log(Y, 'top');
-    element.style.top = Y + 'px';
-    element.style.left = X + 'px';
-}
+// document.onclick = function (event) {
+//     let [X, Y] = getPosition(event);
+//     console.log(X, 'left'), console.log(Y, 'top');
+//     element.style.top = Y + 'px';
+//     element.style.left = X + 'px';
+// }
 
 element.onmousedown = function () {
     document.onmousemove = function (event) {

@@ -1,5 +1,4 @@
-function getCommission() {
-    let value = slider.value;
+function getCommission(value) {
     if (value < 20) {
         return value * 0.02;
     } else if (value >= 20 && value < 50) {
@@ -12,8 +11,9 @@ function getCommission() {
 }
 
 function changeDiagram() {
-    let comission = getCommission();
-    diagramGreen.style.height = `${slider.value * 2}px`
+    let value = slider.value,
+        comission = getCommission(value);
+    diagramGreen.style.height = `${value * 2}px`
     diagramRed.style.height = `${comission * 2}px`
 }
 
@@ -25,12 +25,12 @@ let slider = document.querySelector('#range'),
 
 changeDiagram()
 
-slider.onchange = function () {
+slider.oninput = function () {
     number.value = slider.value;
     changeDiagram()
 }
 
-number.onchange = function () {
+number.oninput = function () {
     slider.value = number.value;
     changeDiagram()
 }
