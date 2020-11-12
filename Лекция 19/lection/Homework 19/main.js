@@ -1,18 +1,18 @@
-function move(event) {
-
-}
-
-function keyDown(event) {
-    let personX = parseInt(computedStylePerson.left),
-        personY = parseInt(computedStylePerson.top);
-    console.log(event.code);
+function moveXAxis(event) {
+    let personX = parseInt(computedStylePerson.left);
     switch (event.code) {
         case 'ArrowRight':
             person.style.left = personX + step + 'px';
-            break;
+            break
         case 'ArrowLeft':
             person.style.left = personX - step + 'px';
-            break;
+            break
+    }
+}
+
+function moveYAxis(event) {
+    let personY = parseInt(computedStylePerson.top);
+    switch (event.code) {
         case 'Space':
             if (event.repeat == false) {
                 person.style.top = personY - jumpHeight + 'px';
@@ -22,11 +22,14 @@ function keyDown(event) {
         case 'KeyZ':
             person.style.width = defaultWidth * 1.15 + 'px';
             person.style.height = defaultHeight * 0.6 + 'px';
-            body.onkeydown = null;
-            break;
-        default:
+            body.onkeydown = moveXAxis;
             break;
     }
+}
+
+function keyDown(event) {
+    moveXAxis(event);
+    moveYAxis(event)
 }
 
 function keyUp(event) {
