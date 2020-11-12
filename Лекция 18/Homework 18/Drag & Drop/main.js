@@ -38,6 +38,7 @@ const element = document.querySelector('.box'),
 
 element.onmousedown = function () {
     document.onmousemove = function (event) {
+        console.log(this);
         let [X, Y] = getPosition(event);
         element.style.top = Y + 'px';
         element.style.left = X + 'px';
