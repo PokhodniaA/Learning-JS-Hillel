@@ -8,17 +8,18 @@
     <style>
         body {
             margin: 0;
-            background-color: #03e6f7;
+            background-image: url(img/background.png);
+            z-index: -100;
         }
 
         #person {
             position: absolute;
-            left: 10px;
+            left: 10%;
             top: 50vh;
 
-            width: 100px;
-            height: 100px;
-            background-color: red;
+            /* width: 100px; */
+            /* height: 100px; */
+            height: 170px;
             transition: .5s;
             transform: translateY(-100%)
         }
@@ -26,7 +27,7 @@
 </head>
 
 <body>
-    <div id="person"></div>
+    <img src="img/batman.png" alt="" id="person">
 </body>
 <script src="main.js"></script>
 
