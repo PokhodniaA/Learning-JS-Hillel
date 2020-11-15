@@ -106,7 +106,6 @@ MakePerson.prototype.specialMove = function (event) {
                 this.person.style.top = this.personY - this.jumpHeight + 'px';
                 document.onkeydown = this.moveXAxis.bind(person);
                 setTimeout(() => this.person.style.top = this.personY + 'px', 300);
-
                 setTimeout(() => document.onkeydown = this.keyDown.bind(person), 400);
             }
             break;
