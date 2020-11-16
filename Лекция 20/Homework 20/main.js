@@ -6,8 +6,8 @@ function ContextMenu(data, actions) {
 ContextMenu.prototype.start = function () {
     const object = this;
     const readyTooPushMenu = this.сonfigurateMenu(object);
-    this.hideMenu(readyTooPushMenu);
     this.pushMenu(readyTooPushMenu);
+
     window.oncontextmenu = function (event) {
         event.preventDefault();
         object.showMenu(event, readyTooPushMenu);
@@ -26,7 +26,7 @@ ContextMenu.prototype.сonfigurateMenu = function (object) {
         contextMenuLi.classList.add('ContextMenuLi');
         contextMenuLi.textContent = item.title;
         contextMenuLi.setAttribute('data-handler', item.handler);
-        contextMenuUl.append(contextMenuLi)
+        contextMenuUl.append(contextMenuLi);
     })
     contextMenuUl.onclick = function (event) {
         const handler = event.target.getAttribute('data-handler');
@@ -37,26 +37,23 @@ ContextMenu.prototype.сonfigurateMenu = function (object) {
 
 ContextMenu.prototype.pushMenu = function (menu) {
     document.body.append(menu);
+    this.width = menu.clientWidth;
+    this.height = menu.clientHeight;
+    this.hideMenu(menu);
 }
 
 ContextMenu.prototype.hideMenu = function (menu) {
-    menu.classList.remove('column');
     menu.hidden = true;
 }
 
 ContextMenu.prototype.showMenu = function (event, menu) {
-    menu.classList.add('column');
-    if (!this.width) {
-        this.width = menu.clientWidth;
-        this.height = menu.clientHeight;
-    }
-    [posX, posY] = this.getPosition(event, menu);
+    [posX, posY] = this.getPosition(event);
     menu.style.left = `${posX}px`;
     menu.style.top = `${posY}px`;
     menu.hidden = false;
 }
 
-ContextMenu.prototype.getPosition = function (event, menu) {
+ContextMenu.prototype.getPosition = function (event) {
     let posX = event.pageX,
         posY = event.pageY;
     const menuWidth = this.width,
@@ -74,7 +71,6 @@ ContextMenu.prototype.getPosition = function (event, menu) {
 
     return [posX, posY]
 }
-
 
 
 
