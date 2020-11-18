@@ -235,6 +235,62 @@ let fragment = document.createDocumentFragment();// Используем для 
  */
 
 
+// ---------------HTML5 LocalStorage ---------------
+
+// Это JSON файл.
+JSON.stringify('elem');//Возвращает строку JSON, соответствующую указанному значению, возможно с включением только определённых свойств или с заменой значений свойств определяемым пользователем способом.
+
+JSON.parse('elem');//Разбирает строку JSON, возможно с преобразованием получаемого значения и его свойств и возвращает разобранное значение.
+
+localStorage.getItem('foo'); // получить элемент по ключу foo;
+
+localStorage.setItem('ключ', 'значение')// добавляет в localStorage новый ключ со значением (а если такой ключ уже существует, то перезаписывает новым значением
+
+localStorage.removeItem("Ключ")//Удаляем ключ
+
+localStorage.clear()// Очищаем все хранилище
+
+Storage.length// Возвращает число, представляющее количество элементов в объекте Storage.
+
+Storage.key() // Приняв число n, метод вернёт имя n-ного ключа в Storage
+
+
+
+//---
+//создадим объект
+var obj = {
+    item1: 1,
+    item2: [123, "two", 3.0],
+    item3: "hello"
+};
+
+var serialObj = JSON.stringify(obj); //сериализуем его
+
+localStorage.setItem("myKey", serialObj); //запишем его в хранилище по ключу "myKey"
+
+var returnObj = JSON.parse(localStorage.getItem("myKey")) //спарсим его обратно объект
+// ---
+
+if (e == QUOTA_EXCEEDED_ERR) { } // проверяет, есть ли ещё место в localstorage
+
+
+// --------------Coockies----------------
+
+cookies.Cookie // Предоставляет информацию о HTTP cookie
+
+cookies.CookieStore //Represents a cookie store in the browser.
+
+cookies.OnChangedCause //Represents the reason a cookie changed.
+
+cookies.get() / cookies.getAll() // Запрашивает информацию об одном кукис.
+
+cookies.set() //Устанавливает кукис с заданной информацией;в том случае если подобный кукис был информация будет перезаписана.
+
+cookies.remove() // Удаляет кукис по имени.
+
+cookies.getAllCookieStores() // Список всех существующих куки
+
+
 //  ---------- АЛГОРИТМЫ -------------
 
 /*Для Сортировки Строк Таблицы */
