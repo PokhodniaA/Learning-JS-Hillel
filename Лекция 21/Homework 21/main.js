@@ -6,17 +6,19 @@ function AddCounters(name) {
 AddCounters.prototype.add = function (n = 1, element = document.body) {
     let i = 0;
     while (i < n) {
-        this.pushBlock(element, this.createBlock());
+        element.append(this.createBlock());
         i++
     }
-    this.pushBlock(element, this.clearCounter());
-    this.pushBlock(element, this.setCounter());
+    element.append(this.clearCounter());
+    element.append(this.setCounter());
 }
 
 AddCounters.prototype.createBlock = function () {
     const block = document.createElement('label'),
         button = document.createElement('input'),
         counter = document.createElement('span'),
+        index = this.counters.length,
+        item = +localStorage.getItem(`${index}-${this.name}`) || 0,
         context = this;
 
     block.classList.add('block');
@@ -24,15 +26,11 @@ AddCounters.prototype.createBlock = function () {
     button.value = 'Click';
     button.type = 'button';
     counter.classList.add('counter', 'element');
-
-    const index = this.counters.length,
-        item = +localStorage.getItem(`${index}-${this.name}`) || 0;
-
     block.textContent = `id:${index + 1}`;
     counter.textContent = item;
-    this.counters.push({ count: item, counter: counter, button: button });
 
     block.append(button, counter);
+    this.counters.push({ count: item, counter: counter, button: button });
 
     button.onclick = function () {
         context.replaceElement(index);
@@ -43,17 +41,8 @@ AddCounters.prototype.createBlock = function () {
 AddCounters.prototype.replaceElement = function (index, num) {
     const value = (num >= 0) ? num : this.counters[index].count + 1;
     this.counters[index].counter.textContent = value;
-    this.setElement(index, value);
-}
-
-AddCounters.prototype.setElement = function (index, value) {
     localStorage.setItem(`${index}-${this.name}`, value);
     this.counters[index].count = value;
-}
-
-
-AddCounters.prototype.pushBlock = function (element, block) {
-    element.append(block);
 }
 
 AddCounters.prototype.clearCounter = function () {
@@ -100,7 +89,7 @@ AddCounters.prototype.setCounter = function () {
 
     setButton.onclick = function () {
         const index = setID.value,
-            value = +setValue.value;
+            value = (+setValue.value >= 0) ? +setValue.value : 0;
         context.replaceElement(index - 1, value);
     }
 
@@ -110,11 +99,11 @@ AddCounters.prototype.setCounter = function () {
 AddCounters.prototype.createNumberInput = function (text, max = null, min = 0) {
     const label = document.createElement('label'),
         button = document.createElement('input');
+
     button.type = 'number';
     button.value = min;
     button.min = min;
     button.max = max;
-
     label.textContent = text;
     label.append(button)
     return [label, button]
