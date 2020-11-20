@@ -18,7 +18,7 @@ AddCounters.prototype.createBlock = function () {
         button = document.createElement('input'),
         counter = document.createElement('span'),
         index = this.counters.length,
-        item = +localStorage.getItem(`${index}-${this.name}`) || 0,
+        item = +localStorage.getItem(`${index + 1}-${this.name}`) || 0,
         context = this;
 
     block.classList.add('block');
@@ -41,7 +41,7 @@ AddCounters.prototype.createBlock = function () {
 AddCounters.prototype.replaceElement = function (index, num) {
     const value = (num >= 0) ? num : this.counters[index].count + 1;
     this.counters[index].counter.textContent = value;
-    localStorage.setItem(`${index}-${this.name}`, value);
+    localStorage.setItem(`${index + 1}-${this.name}`, value);
     this.counters[index].count = value;
 }
 
