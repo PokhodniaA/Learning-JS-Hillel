@@ -33,14 +33,18 @@ ContextMenu.prototype.сonfigurateMenu = function () {
             this.actions[handler]();
         }.bind(this)
     }
+
+    this.width = contextMenuUl.clientWidth;
+    this.height = contextMenuUl.clientHeight;
+
     return contextMenuUl;
 }
 
 ContextMenu.prototype.pushMenu = function (menu) { // ВОПРОС: если сначала спрятать, то ширина и длина будет 0.
-    document.body.append(menu);
-    this.width = menu.clientWidth;
-    this.height = menu.clientHeight;
+    console.log(menu.clientHeight);
     this.hideMenu(menu);
+    document.body.append(menu);
+
 }
 
 ContextMenu.prototype.hideMenu = function (menu) {

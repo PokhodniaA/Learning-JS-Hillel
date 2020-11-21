@@ -14,7 +14,7 @@ AddCounters.prototype.add = function (n = 1, element = document.body) {
 }
 
 AddCounters.prototype.createBlock = function () {
-    function appendToItems() {
+    function appendToNodes() {
         block.classList.add('block');
         button.classList.add('element');
         button.value = 'Click';
@@ -30,7 +30,7 @@ AddCounters.prototype.createBlock = function () {
         index = this.counters.length,
         item = +localStorage.getItem(`${index + 1}-${this.name}`) || 0;
 
-    appendToItems();
+    appendToNodes();
 
     block.append(button, counter);
     this.counters.push({ count: item, counter: counter, button: button });
@@ -49,7 +49,7 @@ AddCounters.prototype.replaceElement = function (index, num) {
 }
 
 AddCounters.prototype.clearCounter = function () {
-    function appendToItems() {
+    function appendToNodes() {
         clearBlock.classList.add('block');
         clearButton.classList.add('element');
         clearCount.classList.add('element');
@@ -59,7 +59,7 @@ AddCounters.prototype.clearCounter = function () {
         clearButton = this.createButtonInput('Clear'),
         [clearCount, clearID] = this.createNumberInput('Введите id:', this.counters.length);
 
-    appendToItems();
+    appendToNodes();
 
     clearButton.onclick = function () { // Если значение 0, то удаляет все элементы
         const index = clearID.value;
@@ -80,7 +80,7 @@ AddCounters.prototype.clearCounter = function () {
 }
 
 AddCounters.prototype.setCounter = function () {
-    function appendToItems() {
+    function appendToNodes() {
         setBlock.classList.add('block');
         setButton.classList.add('element');
         setCount.classList.add('element');
@@ -92,7 +92,7 @@ AddCounters.prototype.setCounter = function () {
         [setCount, setID] = this.createNumberInput('Введите id:', this.counters.length, 1),
         [setNumber, setValue] = this.createNumberInput('Введите число для ввода:');
 
-    appendToItems();
+    appendToNodes();
 
     setBlock.append(setButton, setCount, setNumber);
 
