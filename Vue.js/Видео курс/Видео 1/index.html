@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue1</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    }
+</style>
+
+<body>
+    <div class="wrapper">
+        <div class="sample">
+            <input type="text" name="" id="" v-bind:value='name' v-on:input='name = $event.target.value'>
+            <!-- v-model="name"-->
+            <hr>
+            <button v-on:click="showH2 = !showH2" v-bind:title="btnText">{{ btnText }}</button>
+            <hr>
+            <h2 v-show='showH2'>Hello {{ name }}! Your sum:{{ sum }}</h2>
+            <hr>
+            <button v-on:click="addNumber">Add Number</button>
+            <hr>
+            <ul>
+                <li v-for="number in numbers">{{ number }}</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+<script src="main.js"></script>
+
+</html>
+
+<!-- ---Директивы---
+
+v-show="true/false" -- показывает либо прячет узел
+
+v-on:click = "" -- обработчик событий(onclick  например,  вместо click подставляем любое событие)
+
+v-bind:title="" -- позволяет делать динамические атрибуты
+
+v-for='' -- Для динамического создани контента. работает как цикл for.
+-->

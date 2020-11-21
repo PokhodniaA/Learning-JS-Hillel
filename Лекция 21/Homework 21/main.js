@@ -18,8 +18,7 @@ AddCounters.prototype.createBlock = function () {
         button = document.createElement('input'),
         counter = document.createElement('span'),
         index = this.counters.length,
-        item = +localStorage.getItem(`${index + 1}-${this.name}`) || 0,
-        context = this;
+        item = +localStorage.getItem(`${index + 1}-${this.name}`) || 0;
 
     block.classList.add('block');
     button.classList.add('element');
@@ -33,8 +32,8 @@ AddCounters.prototype.createBlock = function () {
     this.counters.push({ count: item, counter: counter, button: button });
 
     button.onclick = function () {
-        context.replaceElement(index);
-    }
+        this.replaceElement(index);
+    }.bind(this)
     return block;
 }
 
@@ -48,8 +47,7 @@ AddCounters.prototype.replaceElement = function (index, num) {
 AddCounters.prototype.clearCounter = function () {
     const clearBlock = document.createElement('div'),
         clearButton = this.createButtonInput('Clear'),
-        [clearCount, clearID] = this.createNumberInput('Введите id:', this.counters.length),
-        context = this;
+        [clearCount, clearID] = this.createNumberInput('Введите id:', this.counters.length);
 
     clearBlock.classList.add('block');
     clearButton.classList.add('element');
@@ -59,16 +57,16 @@ AddCounters.prototype.clearCounter = function () {
         const index = clearID.value;
         switch (+index) {
             case 0:
-                for (let i = 0; i < context.counters.length; i++) {
-                    context.replaceElement(i, 0);
+                for (let i = 0; i < this.counters.length; i++) {
+                    this.replaceElement(i, 0);
                 }
                 break;
 
             default:
-                context.replaceElement(index - 1, 0);
+                this.replaceElement(index - 1, 0);
                 break;
         }
-    }
+    }.bind(this)
     clearBlock.append(clearButton, clearCount)
     return clearBlock
 }
@@ -77,8 +75,7 @@ AddCounters.prototype.setCounter = function () {
     const setBlock = document.createElement('div'),
         setButton = this.createButtonInput('setCounter'),
         [setCount, setID] = this.createNumberInput('Введите id:', this.counters.length, 1),
-        [setNumber, setValue] = this.createNumberInput('Введите число для ввода:'),
-        context = this;
+        [setNumber, setValue] = this.createNumberInput('Введите число для ввода:');
 
     setBlock.classList.add('block');
     setButton.classList.add('element');
@@ -90,8 +87,8 @@ AddCounters.prototype.setCounter = function () {
     setButton.onclick = function () {
         const index = setID.value,
             value = (+setValue.value >= 0) ? +setValue.value : 0;
-        context.replaceElement(index - 1, value);
-    }
+        this.replaceElement(index - 1, value);
+    }.bind(this)
 
     return setBlock;
 }

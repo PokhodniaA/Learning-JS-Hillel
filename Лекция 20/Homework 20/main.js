@@ -4,38 +4,39 @@ function ContextMenu(data, actions) {
 }
 
 ContextMenu.prototype.start = function () {
-    const object = this;
-    const readyTooPushMenu = this.сonfigurateMenu(object);
+    const readyTooPushMenu = this.сonfigurateMenu();
     this.pushMenu(readyTooPushMenu);
 
     window.oncontextmenu = function (event) {
         event.preventDefault();
-        object.showMenu(event, readyTooPushMenu);
-    }
+        this.showMenu(event, readyTooPushMenu);
+    }.bind(this)
 
     window.onclick = function () {
-        object.hideMenu(readyTooPushMenu);
-    }
+        this.hideMenu(readyTooPushMenu);
+    }.bind(this)
 }
 
-ContextMenu.prototype.сonfigurateMenu = function (object) {
+ContextMenu.prototype.сonfigurateMenu = function () {
     const contextMenuUl = document.createElement('ul');
     contextMenuUl.classList.add('ContextMenuUl');
-    this.data.items.forEach((item) => {
-        const contextMenuLi = document.createElement('li');
-        contextMenuLi.classList.add('ContextMenuLi');
-        contextMenuLi.textContent = item.title;
-        contextMenuLi.setAttribute('data-handler', item.handler);
-        contextMenuUl.append(contextMenuLi);
-    })
-    contextMenuUl.onclick = function (event) {
-        const handler = event.target.getAttribute('data-handler');
-        object.actions[handler]();
+    if (this.data.items.length > 0) {
+        this.data.items.forEach((item) => {
+            const contextMenuLi = document.createElement('li');
+            contextMenuLi.classList.add('ContextMenuLi');
+            contextMenuLi.textContent = item.title;
+            contextMenuLi.setAttribute('data-handler', item.handler);
+            contextMenuUl.append(contextMenuLi);
+        })
+        contextMenuUl.onclick = function (event) {
+            const handler = event.target.getAttribute('data-handler');
+            this.actions[handler]();
+        }.bind(this)
     }
     return contextMenuUl;
 }
 
-ContextMenu.prototype.pushMenu = function (menu) {
+ContextMenu.prototype.pushMenu = function (menu) { // ВОПРОС: если сначала спрятать, то ширина и длина будет 0.
     document.body.append(menu);
     this.width = menu.clientWidth;
     this.height = menu.clientHeight;
@@ -59,13 +60,15 @@ ContextMenu.prototype.getPosition = function (event) {
     const menuWidth = this.width,
         menuHeight = this.height,
         windowWidth = window.innerWidth,
-        windowHeight = window.innerHeight;
+        windowHeight = window.innerHeight,
+        positionXLimit = windowWidth - menuWidth,
+        positinYLimit = windowHeight - menuHeight;
 
-    if (posX > windowWidth - menuWidth) {
+    if (posX > positionXLimit) {
         posX -= menuWidth;
     }
 
-    if (posY > windowHeight - menuHeight) {
+    if (posY > positinYLimit) {
         posY -= menuHeight
     }
 
