@@ -14,7 +14,7 @@ AddCounters.prototype.add = function (n = 1, element = document.body) {
 }
 
 AddCounters.prototype.createBlock = function () {
-    const block = document.createElement('label'),
+    const block = document.createElement('div'),
         button = document.createElement('input'),
         counter = document.createElement('span'),
         index = this.counters.length,
