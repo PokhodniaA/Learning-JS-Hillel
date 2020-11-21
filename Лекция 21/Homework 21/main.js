@@ -14,19 +14,23 @@ AddCounters.prototype.add = function (n = 1, element = document.body) {
 }
 
 AddCounters.prototype.createBlock = function () {
+    function appendToItems() {
+        block.classList.add('block');
+        button.classList.add('element');
+        button.value = 'Click';
+        button.type = 'button';
+        counter.classList.add('counter', 'element');
+        block.textContent = `id:${index + 1}`;
+        counter.textContent = item;
+    }
+
     const block = document.createElement('div'),
         button = document.createElement('input'),
         counter = document.createElement('span'),
         index = this.counters.length,
         item = +localStorage.getItem(`${index + 1}-${this.name}`) || 0;
 
-    block.classList.add('block');
-    button.classList.add('element');
-    button.value = 'Click';
-    button.type = 'button';
-    counter.classList.add('counter', 'element');
-    block.textContent = `id:${index + 1}`;
-    counter.textContent = item;
+    appendToItems();
 
     block.append(button, counter);
     this.counters.push({ count: item, counter: counter, button: button });
@@ -45,13 +49,17 @@ AddCounters.prototype.replaceElement = function (index, num) {
 }
 
 AddCounters.prototype.clearCounter = function () {
+    function appendToItems() {
+        clearBlock.classList.add('block');
+        clearButton.classList.add('element');
+        clearCount.classList.add('element');
+    }
+
     const clearBlock = document.createElement('div'),
         clearButton = this.createButtonInput('Clear'),
         [clearCount, clearID] = this.createNumberInput('Введите id:', this.counters.length);
 
-    clearBlock.classList.add('block');
-    clearButton.classList.add('element');
-    clearCount.classList.add('element');
+    appendToItems();
 
     clearButton.onclick = function () { // Если значение 0, то удаляет все элементы
         const index = clearID.value;
@@ -72,15 +80,19 @@ AddCounters.prototype.clearCounter = function () {
 }
 
 AddCounters.prototype.setCounter = function () {
+    function appendToItems() {
+        setBlock.classList.add('block');
+        setButton.classList.add('element');
+        setCount.classList.add('element');
+        setNumber.classList.add('element');
+    }
+
     const setBlock = document.createElement('div'),
         setButton = this.createButtonInput('setCounter'),
         [setCount, setID] = this.createNumberInput('Введите id:', this.counters.length, 1),
         [setNumber, setValue] = this.createNumberInput('Введите число для ввода:');
 
-    setBlock.classList.add('block');
-    setButton.classList.add('element');
-    setCount.classList.add('element');
-    setNumber.classList.add('element');
+    appendToItems();
 
     setBlock.append(setButton, setCount, setNumber);
 
