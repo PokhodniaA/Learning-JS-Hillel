@@ -1,5 +1,4 @@
 var express = require("express");
-var fs = require("fs");
 var app = express();
 var bodyParser = require("body-parser");
 
@@ -31,9 +30,7 @@ let data = {
     a: 0,
     b: true,
     c: '2',
-    d() {
-        console.log('Hello,World!');
-    },
+    d: 'Hello'
 }
 
 app.get("/get-user-info", function (req, responce) {
