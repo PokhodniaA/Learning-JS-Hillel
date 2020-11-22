@@ -1,5 +1,5 @@
 function AddCounters(name) {
-    this.name = name;
+    this.name = name || `${Math.random()}`;
     this.counters = [];
 }
 
@@ -9,8 +9,10 @@ AddCounters.prototype.add = function (n = 1, element = document.body) {
         element.append(this.createBlock());
         i++
     }
-    element.append(this.clearCounter());
-    element.append(this.setCounter());
+    if (n > 0) {
+        element.append(this.clearCounter());
+        element.append(this.setCounter());
+    }
 }
 
 AddCounters.prototype.createBlock = function () {
@@ -126,6 +128,6 @@ AddCounters.prototype.createButtonInput = function (value) {
 }
 
 
-const counters = new AddCounters('first');
+const counters = new AddCounters('firstBlock');
 counters.add(4);
 
