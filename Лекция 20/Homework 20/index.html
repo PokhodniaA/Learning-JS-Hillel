@@ -12,14 +12,23 @@
         }
 
         .ContextMenuUl {
-            position: absolute;
+            position: fixed;
             padding: 5px 0;
+            visibility: hidden;
 
             background-color: #ffffff;
 
             border: 1px solid rgb(212, 212, 212);
             border-radius: 8px;
             box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.39);
+            transition: all .3s;
+            opacity: 0;
+        }
+
+        .ContextMenuUlShow {
+            opacity: 1;
+            visibility: visible;
+
         }
 
         .ContextMenuLi {
