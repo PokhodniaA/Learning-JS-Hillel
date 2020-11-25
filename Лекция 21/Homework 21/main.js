@@ -6,7 +6,7 @@ function AddCounters(data) {
 
 AddCounters.prototype.toDo = function () {
     this.drawTamplete();
-    this.applyModelToTemplate();
+    this.addStyleToTamplate();
     this.bindEvents();
     return this
 }
@@ -93,7 +93,7 @@ AddCounters.createButtonInput = function (value) {
     return button
 }
 
-AddCounters.prototype.applyModelToTemplate = function () {
+AddCounters.prototype.addStyleToTamplate = function () {
     const { counterBlocks, clearBlock, setBlock } = this.template,
         styles = this.data.style;
 
