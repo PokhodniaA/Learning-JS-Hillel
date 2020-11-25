@@ -144,7 +144,6 @@ AddCounters.prototype.toDo = function () {
     this.drawTamplete();
     this.applyModelToTemplate();
     this.bindEvents();
-
     return this
 }
 
