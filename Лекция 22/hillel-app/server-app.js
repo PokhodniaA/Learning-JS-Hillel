@@ -1,4 +1,5 @@
 var express = require("express");
+var fs = require("fs");
 var app = express();
 var bodyParser = require("body-parser");
 
@@ -25,15 +26,15 @@ app.listen(port, function () {
     console.log(`Example app listening on port http://localhost:${port}/`);
 });
 
-
-let data = {
-    a: 0,
-    b: true,
-    c: '2',
-    d: 'Hello'
+function read(url, callback) {
+    fs.readFile(url, "utf-8", callback);
 }
+
 
 app.get("/get-user-info", function (req, responce) {
     responce.status(200);
-    responce.send(JSON.stringify(data));
+    read("./data.json", function (error, data) {
+        responce.send(data);
+    })
+
 })
