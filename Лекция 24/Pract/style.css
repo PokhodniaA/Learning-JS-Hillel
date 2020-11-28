@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  border: 2px solid black;
+  padding: 30px;
+  position: fixed;
+  transition: left 0.5s linear;
+  top: 4%;
+}
+
+form:nth-child(even) {
+  left: 100%;
+}
+
+form:nth-child(odd) {
+  left: -300px;
+  transform: translateX(-50%);
+}
+
+form.center {
+  left: 50%;
+  transform: translateX(-50%);
+}
