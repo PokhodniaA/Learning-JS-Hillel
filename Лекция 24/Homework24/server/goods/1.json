@@ -1,0 +1,17 @@
+[
+    {
+        "brandName": "Apple",
+        "modelName": "iPhone 11",
+        "price": 20000
+    },
+    {
+        "brandName": "Samsung",
+        "modelName": "Galaxy S20",
+        "price": 18000
+    },
+    {
+        "brandName": "Google",
+        "modelName": "Pixel",
+        "price": 22000
+    }
+]

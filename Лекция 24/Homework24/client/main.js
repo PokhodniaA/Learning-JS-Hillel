@@ -66,10 +66,46 @@ ErrorBlock.prototype.show = function () {
 }
 // ======================================
 
+function signIn(login, password) {
+    ajax({
+        url: 'http://localhost:3003/',
+        method: 'post',
+        data: {
+            "login": login,
+            "password": password,
+        },
+        success(data, status) {
+            if (status == 200) {
+                console.log(`${status}-OK`);
+                resData = getGoods(data.id);
+            } else {
+                console.log('Unauthorized');
+            }
+        }
+    })
+
+}
+
+function getGoods(id) {
+    ajax({
+        url: 'http://localhost:3003/goods',
+        method: 'post',
+        data: id,
+        success(data, status) {
+            console.log(data);
+            showInformation(data);
+        }
+    })
+}
+
+function showInformation(data) {
+
+}
+
 window.onload = function () {
     const signInForm = new Form(),
-        form = signInForm.nodes.form;
-    errorEmptyData = new ErrorBlock();
+        form = signInForm.nodes.form,
+        errorEmptyData = new ErrorBlock();
 
     signInForm.toDo().render();
     errorEmptyData.addToNode('You have not entered data').render();
@@ -79,6 +115,10 @@ window.onload = function () {
         let login = form.login.value,
             password = form.password.value;
 
-        (login || password) ? console.log(login, password) : errorEmptyData.show();
+        if (login || password) {
+            signIn(login, password);
+        } else {
+            errorEmptyData.show();
+        }
     };
 }
