@@ -43,15 +43,8 @@ function verifyUsers({ login, password }, response) {
         if (typeof user == 'object') {
             response.status(200).send(user);
         } else {
-            response.status(401).send({}); // костыль надо исправить
+            response.status(401).send({});
         }
-    })
-}
-
-function getGoods(id, response) {
-    const url = `./goods/${id}.json`
-    read(url, (error, data) => {
-        response.status(200).send(data);
     })
 }
 
@@ -59,6 +52,15 @@ app.post("/", function (req, response) {
     console.log(req.body, 'Req.Body');
     verifyUsers(JSON.parse(req.body), response);
 })
+
+
+
+function getGoods(id, response) {
+    const url = `./goods/${id}.json`
+    read(url, (error, data) => {
+        response.status(200).send(data);
+    })
+}
 
 app.post("/goods", function (req, response) {
     console.log(req.body, 'Req.Body.goods');

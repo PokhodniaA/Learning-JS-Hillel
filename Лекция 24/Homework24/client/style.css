@@ -10,6 +10,7 @@ body {
 form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   position: fixed;
 
   padding: 15px;
@@ -33,6 +34,9 @@ form.center {
 
 form > label {
   margin: 5px 0;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
 }
 
 label > input {
@@ -55,4 +59,24 @@ label > input {
 
 .errorBlock.show {
   top: 0;
+}
+
+.items {
+  width: 80%;
+  margin: 5px auto;
+
+  background-color: white;
+  border: 1px solid rgb(223, 223, 223);
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.items.show {
+  opacity: 1;
+}
+
+.items_list {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
 }
