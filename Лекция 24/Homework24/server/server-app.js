@@ -43,7 +43,7 @@ function verifyUsers({ login, password }, response) {
             response.status(200).send(user);
         } else {
             response.status(401).send({
-                success: 'Unauthorized'
+                error: 'Unauthorized'
             });
         }
     })
