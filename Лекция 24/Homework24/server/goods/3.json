@@ -1,0 +1,22 @@
+[
+    {
+        "brandName": "Fender",
+        "modelName": "Telecaster",
+        "price": 60000
+    },
+    {
+        "brandName": "Fender",
+        "modelName": "Stratocaster",
+        "price": 55000
+    },
+    {
+        "brandName": "PRS",
+        "modelName": "Custom 24",
+        "price": 110000
+    },
+    {
+        "brandName": "Gibson",
+        "modelName": "Les Paul",
+        "price": 90000
+    }
+]

@@ -3,5 +3,20 @@
         "login": "admin",
         "password": "admin",
         "id": 1
+    },
+    {
+        "login": "Mike",
+        "password": "Mike",
+        "id": 2
+    },
+    {
+        "login": "Ann",
+        "password": "Ann",
+        "id": 3
+    },
+    {
+        "login": "John",
+        "password": "John",
+        "id": 4
     }
 ]

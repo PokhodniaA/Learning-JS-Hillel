@@ -1,0 +1,27 @@
+[
+    {
+        "brandName": "Apple",
+        "modelName": "Macbook Pro",
+        "price": 50000
+    },
+    {
+        "brandName": "Apple",
+        "modelName": "Macbook Air",
+        "price": 30000
+    },
+    {
+        "brandName": "Asus",
+        "modelName": "Zephyrus m15",
+        "price": 35000
+    },
+    {
+        "brandName": "Xiaomi",
+        "modelName": "Minotebook Pro",
+        "price": 35000
+    },
+    {
+        "brandName": "Dell",
+        "modelName": "XPS 15",
+        "price": 60000
+    }
+]

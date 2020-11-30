@@ -40,10 +40,10 @@ function verifyUsers({ login, password }, response) {
             }
         });
         const user = verifiedUser[0];
-        if (typeof user == 'object') {
+        if (user) {
             response.status(200).send(user);
         } else {
-            response.status(401).send({});
+            response.status(401).send({}); // костылб
         }
     })
 }

@@ -40,6 +40,7 @@ window.onload = function () {
                 elem.render();
             }, index * 500);
         });
+
     }
 
     const signInForm = new Form(),
@@ -48,7 +49,7 @@ window.onload = function () {
         errorUnauthorized = new ErrorBlock();
 
     signInForm.toDo().render();
-    errorEmptyData.addToNode('You have not entered data');
+    errorEmptyData.addToNode('You have not entered data'); // создаю отдельный блок для каждой ошибки, чтобы не менять каждый раз текст.
     errorUnauthorized.addToNode('Error 401. Unknown user ');
 
     form.onsubmit = function (event) {
@@ -66,7 +67,6 @@ window.onload = function () {
 
 
 // -------to do list------------
-// 1. после отрисоки элементов убрать форму и ошибки
-// 2. сделать одну ошибку и менять в ней текст
-// 3. подобавлять пользователей
+// 1. после отрисоки элементов убрать форму из DOM ?
+// 2. сделать одну ошибку и менять в ней текст ?
 // 4. сделать рефакторинг

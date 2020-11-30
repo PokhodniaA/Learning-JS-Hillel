@@ -1,0 +1,17 @@
+[
+    {
+        "brandName": "Santa Cruz",
+        "modelName": "Megatower",
+        "price": 150000
+    },
+    {
+        "brandName": "Santa Cruz",
+        "modelName": "HighTower",
+        "price": 200000
+    },
+    {
+        "brandName": "Specialized",
+        "modelName": "Enduro",
+        "price": 260000
+    }
+]
