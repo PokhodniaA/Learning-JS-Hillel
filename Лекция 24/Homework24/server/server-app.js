@@ -34,16 +34,17 @@ function read(url, callback) {
 function verifyUsers({ login, password }, response) {
     read('./users.json', (error, data) => {
         const newData = JSON.parse(data);
-        const verifiedUser = newData.filter((user) => {
+        const user = newData.filter((user) => {
             if (login == user.login && password == user.password) {
                 return user
             }
-        });
-        const user = verifiedUser[0];
+        })[0];
         if (user) {
             response.status(200).send(user);
         } else {
-            response.status(401).send({}); // костылб
+            response.status(401).send({
+                success: 'Unauthorized'
+            });
         }
     })
 }
@@ -56,7 +57,7 @@ app.post("/", function (req, response) {
 
 
 function getGoods(id, response) {
-    const url = `./goods/${id}.json`
+    const url = `./goods/${id}.json` // без проверки на id.
     read(url, (error, data) => {
         response.status(200).send(data);
     })

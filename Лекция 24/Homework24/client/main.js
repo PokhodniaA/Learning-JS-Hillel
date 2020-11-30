@@ -10,10 +10,8 @@ window.onload = function () {
             },
             success(data, status) {
                 if (status == 200) {
-                    console.log(`${status}-OK`);
                     resData = getGoods(data.id);
                 } else {
-                    console.log('Unauthorized');
                     (errorBlock.rendered)
                         ? errorBlock.addText('Error 401. Unknown user').show()
                         : errorBlock.addText('Error 401. Unknown user').render().show();
@@ -38,8 +36,7 @@ window.onload = function () {
         signInForm.hide();
         const items = data.forEach((item, index) => {
             setTimeout(() => {  // чтобы появлялись элементы постепенно
-                const elem = new GoodsItem(item).toDo();
-                elem.render();
+                new GoodsItem(item).toDo().render();
             }, index * 500);
         });
 
@@ -66,8 +63,3 @@ window.onload = function () {
         }
     };
 }
-
-
-// -------to do list------------
-// 2. сделать одну ошибку и менять в ней текст ?
-// 4. сделать рефакторинг
