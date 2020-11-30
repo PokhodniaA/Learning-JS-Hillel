@@ -14,7 +14,9 @@ window.onload = function () {
                     resData = getGoods(data.id);
                 } else {
                     console.log('Unauthorized');
-                    (errorUnauthorized.rendered) ? errorUnauthorized.show() : errorUnauthorized.render().show();
+                    (errorBlock.rendered)
+                        ? errorBlock.addText('Error 401. Unknown user').show()
+                        : errorBlock.addText('Error 401. Unknown user').render().show();
                 }
             }
         })
@@ -45,12 +47,10 @@ window.onload = function () {
 
     const signInForm = new Form(),
         form = signInForm.nodes.form,
-        errorEmptyData = new ErrorBlock(),
-        errorUnauthorized = new ErrorBlock();
+        errorBlock = new ErrorBlock();
 
     signInForm.toDo().render();
-    errorEmptyData.addToNode('You have not entered data'); // создаю отдельный блок для каждой ошибки, чтобы не менять каждый раз текст.
-    errorUnauthorized.addToNode('Error 401. Unknown user ');
+    errorBlock.addToNode();
 
     form.onsubmit = function (event) {
         event.preventDefault();
@@ -60,13 +60,14 @@ window.onload = function () {
         if (login && password) {
             signIn(login, password);
         } else {
-            (errorEmptyData.rendered) ? errorEmptyData.show() : errorEmptyData.render().show();
+            (errorBlock.rendered)
+                ? errorBlock.addText('You have not entered data').show()
+                : errorBlock.addText('You have not entered data').render().show();
         }
     };
 }
 
 
 // -------to do list------------
-// 1. после отрисоки элементов убрать форму из DOM ?
 // 2. сделать одну ошибку и менять в ней текст ?
 // 4. сделать рефакторинг

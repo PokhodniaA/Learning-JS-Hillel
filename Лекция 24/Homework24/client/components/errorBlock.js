@@ -4,20 +4,21 @@ function ErrorBlock() {
 
 ErrorBlock.prototype.addToNode = function (errorText) {
     this.block.classList.add('errorBlock');
-    this.addText(errorText);
+    if (errorText) { this.addText(errorText); }
     return this
 }
 
 ErrorBlock.prototype.addText = function (errorText) {
-    this.block.innerHTML = errorText;
-
+    if (this.text !== errorText) {
+        this.text = errorText;
+        this.block.innerHTML = errorText;
+    }
     return this
 }
 
 ErrorBlock.prototype.render = function () {
     this.rendered = true;
     document.body.append(this.block);
-
     return this
 }
 
