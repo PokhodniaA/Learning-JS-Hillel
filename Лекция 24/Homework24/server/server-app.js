@@ -57,7 +57,7 @@ app.post("/", function (req, response) {
 
 
 function getGoods(id, response) {
-    const url = `./goods/${id}.json` // без проверки на id.
+    const url = `./goods/${id}.json` // без проверки на наличие id.
     read(url, (error, data) => {
         response.status(200).send(data);
     })
