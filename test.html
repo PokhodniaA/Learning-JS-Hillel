@@ -5,12 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        label {
+            float: left;
+            width: 100px;
+            margin-right: 10px;
+            color: #464646;
+            text-align: right;
+            padding: 5px 0;
+        }
+
+        input {
+            width: 200px;
+        }
+
+        div {
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin-left: 150px;
+        }
+    </style>
 </head>
 
 <body>
-    <form name="person">
-        <input name="name" value="Петя">
-        <input name="surname" value="Васечкин">
+    <form>
+        <div>
+            <label for="">Name</label>
+            <input type="text">
+        </div>
+
+        <div>
+            <label for="">LastName</label>
+            <input type="text">
+        </div>
+
+        <div>
+            <label for="">Adress</label>
+            <input type="text">
+        </div>
+
+
+        <button>Submit</button>
     </form>
 </body>
 
@@ -18,18 +57,12 @@
 
 
 <script>
-    // заполним FormData данными из формы
-    let formData = new FormData(document.forms.person);
-    console.dir(formData);
-    // добавим ещё одно поле
-    formData.append("middle", "Иванович");
 
-
-
-    // отправим данные
-    // let xhr = new XMLHttpRequest();
-    // xhr.open("POST", "/article/xmlhttprequest/post/user");
-    // xhr.send(formData);
-
-    // xhr.onload = () => alert(xhr.response);
 </script>
+
+<!-- посмотреть 
+    counter-reset: num;
+    counter-increment: num;
+    content: counter(num);
+    :before        
+-->

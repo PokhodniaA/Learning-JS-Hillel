@@ -1,5 +1,5 @@
 const promise = new Promise((res, rej) => {
-    const bool = false;
+    const bool = true;
     console.log(0);
     (bool) ? res(bool) : rej(bool);
 })
