@@ -7,57 +7,84 @@
     <title>Document</title>
 
     <style>
-        label {
-            float: left;
-            width: 100px;
-            margin-right: 10px;
-            color: #464646;
-            text-align: right;
-            padding: 5px 0;
+        * {
+            box-sizing: border-box;
         }
 
-        input {
-            width: 200px;
+        header {
+            position: sticky;
+            top: 0;
+            background-color: chartreuse;
+            width: 100%;
+            padding: 10px;
         }
 
-        div {
-            overflow: hidden;
-            margin-bottom: 10px;
+        ul {
+            display: flex;
+            justify-content: start;
         }
 
-        button {
-            margin-left: 150px;
+        li {
+            list-style: none;
+            margin: 0 10px;
+        }
+
+        .socialblock {
+            position: sticky;
+            top: 75px;
+            margin-top: 5px;
+        }
+
+        .social {
+
+            width: 60px;
+            height: 60px;
+            background-color: cornflowerblue;
+            margin-top: 5px;
+        }
+
+        .main {
+            width: 40%;
+            height: 1000px;
+            margin: 0 auto;
+            /* border: 1px solid black; */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
         }
     </style>
 </head>
 
 <body>
-    <form>
-        <div>
-            <label for="">Name</label>
-            <input type="text">
-        </div>
+    <HEAder>
+        <ul>
+            <li>home</li>
+            <li>result</li>
+            <li>download</li>
+            <li>contact</li>
+        </ul>
+    </HEAder>
+    <main>
+        <aside class="socialblock">
+            <div class="social"></div>
+            <div class="social"></div>
+            <div class="social"></div>
+        </aside>
 
-        <div>
-            <label for="">LastName</label>
-            <input type="text">
-        </div>
-
-        <div>
-            <label for="">Adress</label>
-            <input type="text">
-        </div>
-
-
-        <button>Submit</button>
-    </form>
+        <section>
+            <div class="main"></div>
+        </section>
+    </main>
 </body>
 
 </html>
 
 
 <script>
-
+    let res = 1920000
+    for (let i = 1; i < 10; i++) {
+        // res = (res + 10000)
+        res = (res * 1.5)
+    }
+    console.log(res);
 </script>
 
 <!-- посмотреть 
