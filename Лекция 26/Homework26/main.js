@@ -15,7 +15,7 @@ const toDo = new Vue({
         doneList: doneList,
     },
     methods: {
-        moveToDone(event) {
+        moveToDone() {
             if (this.toDoList.length > 0) {
                 this.doneList.unshift(this.toDoList.pop());
             }
