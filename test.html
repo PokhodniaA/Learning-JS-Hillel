@@ -79,12 +79,11 @@
 
 
 <script>
-    let res = 1920000
-    for (let i = 1; i < 10; i++) {
-        // res = (res + 10000)
-        res = (res * 1.5)
+    let arr = [1, 2, 3, 4, 5];
+    for (let i = 0; i < arr.length; i += 2) {
+        arr.splice(i + 1, 0, arr.splice(i, 1)[0])
     }
-    console.log(res);
+    console.log(arr);
 </script>
 
 <!-- посмотреть 

@@ -15,7 +15,7 @@
             <ul>
                 <li v-for="toDo in toDoList">{{ toDo }}</li>
             </ul>
-            <button v-on:click="moveToDone">Transfer</button>
+            <button @click="moveToDone">Transfer</button>
         </div>
 
         <div class='listBlock done'>
@@ -23,7 +23,7 @@
             <ul>
                 <li v-for="Done in doneList">{{ Done }}</li>
             </ul>
-            <button v-on:click="moveToDo">Transfer</button>
+            <button @click="moveToDo">Transfer</button>
         </div>
     </section>
 </body>
