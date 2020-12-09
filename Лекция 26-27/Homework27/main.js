@@ -4,12 +4,28 @@ Vue.component('diagrams', {
             listOfDiagrams: listOfDiagrams,
         }
     },
+    methods: {
+        sortDiagrams() {
+            this.listOfDiagrams.sort((a, b) => {
+                return (a.diagramHeight > b.diagramHeight) ? 1 : -1;
+            });
+            console.log(this.listOfDiagrams);
+        }
+    },
     template: `
-        <div class="diagrams">
-            <diagram
-                v-for="item in listOfDiagrams"
-                :sendedDiagram="item"
-            />
+        <div>
+            <div class="diagrams">
+                <diagram
+                    v-for="item in listOfDiagrams"
+                    :sendedDiagram="item"
+                />
+            </div>
+
+            <hr />
+
+            <button
+                @click="sortDiagrams"
+            >Sort</button>
         </div>
     `
 });
@@ -49,10 +65,11 @@ Vue.component('diagram', {
     },
     template: `
         <div class='diagram'>
-            <column 
+            <div 
+                class="column"
                 :class="colorColumn"
                 :style="{height: rangeValue + 'px'}"
-            />
+            ></div>
             <input 
                 type="range" 
                 min="100"
@@ -64,11 +81,11 @@ Vue.component('diagram', {
 `
 });
 
-Vue.component('column', {
-    template: `
-        <div class="column"></div> 
-    `
-})
+// Vue.component('column', {
+//     template: `
+//         <div class="column"></div> 
+//     `
+// })
 
 const app = new Vue({
     el: "#app",
