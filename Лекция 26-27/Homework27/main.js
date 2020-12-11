@@ -15,14 +15,14 @@ Vue.component('diagrams', {
     },
     template: `
         <div>
-                <transition-group tag="div" name="list" class="diagrams">
-                    <diagram
-                        v-for="item in listOfDiagrams"
-                        :key="item.diagramName"
-                        :sendedDiagram="item"
-                        @toLocalStorage="setToLocalStorage"
-                    />
-                </transition-group>
+            <transition-group tag="div" name="list" class="diagrams">
+                <diagram
+                    v-for="item in listOfDiagrams"
+                    :key="item.diagramName"
+                    :sendedDiagram="item"
+                    @toLocalStorage="setToLocalStorage"
+                />
+            </transition-group>
 
             <hr />
 
