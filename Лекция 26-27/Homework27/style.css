@@ -42,3 +42,15 @@
 .grey {
   background-color: grey;
 }
+
+.flip-list-move {
+  transition: transform 1s;
+}
+
+.sort_btn {
+  display: block;
+  margin: auto;
+  padding: 10px;
+  width: 30%;
+  font-size: 1.2rem;
+}
