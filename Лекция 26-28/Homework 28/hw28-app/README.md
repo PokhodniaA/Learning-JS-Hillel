@@ -1,4 +1,4 @@
-# shop-app
+# hw28-app
 
 ## Project setup
 ```
