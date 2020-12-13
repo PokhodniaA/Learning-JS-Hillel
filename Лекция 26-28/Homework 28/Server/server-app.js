@@ -1,8 +1,8 @@
 var express = require("express");
-var fs = require("fs");
 var app = express();
 var bodyParser = require("body-parser");
 const { response } = require("express");
+const { read } = require('./helper/read');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
@@ -23,48 +23,14 @@ app.use(function (req, res, next) {
 });
 
 const port = 3003;
+
 app.listen(port, function () {
     console.log(`Example app listening on port http://localhost:${port}/`);
 });
 
-// function read(url, callback) {
-//     fs.readFile(url, "utf-8", callback);
-// }
-
-// function verifyUsers({ login, password }, response) {
-//     read('./users.json', (error, data) => {
-//         const newData = JSON.parse(data);
-//         const user = newData.filter((user) => {
-//             if (login == user.login && password == user.password) {
-//                 return user
-//             }
-//         })[0];
-//         if (user) {
-//             response.status(200).send(user);
-//         } else {
-//             response.status(401).send({
-//                 error: 'Unauthorized'
-//             });
-//         }
-//     })
-// }
-
-// app.post("/", function (req, response) {
-//     console.log(req.body, 'Req.Body');
-//     verifyUsers(JSON.parse(req.body), response);
-// })
-
-
-
-// function getGoods(id, response) {
-//     const url = `./goods/${id}.json` // без проверки на наличие id.
-//     read(url, (error, data) => {
-//         response.status(200).send(data);
-//     })
-// }
-
-// app.post("/goods", function (req, response) {
-//     console.log(req.body, 'Req.Body.goods');
-//     getGoods(+req.body, response);
-
-// })
+app.get('/', (req, res) => {
+    read('./models/data.json', function (error, data) {
+        console.log(error, 'erroe');
+        res.status(200).send(data);
+    });
+});
