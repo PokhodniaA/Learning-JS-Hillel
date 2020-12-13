@@ -2,7 +2,7 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 const { response } = require("express");
-const { read } = require('./helper/read');
+const { read, write } = require('./helper/readAndWrite');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
@@ -33,4 +33,8 @@ app.get('/', (req, res) => {
         console.log(error, 'erroe');
         res.status(200).send(data);
     });
+});
+
+app.post('/', (req, res) => {
+    write('./models/data.json', req.body)
 });

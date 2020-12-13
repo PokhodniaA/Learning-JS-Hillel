@@ -1,23 +1,27 @@
 <template>
-  <div class="modal">
-    <div class="modal__inner">
-      <div class="modal__container">
-        <section class="modal__header">
-          <slot name="header"></slot>
-        </section>
+  <transition name="fade" appear>
+    <div class="modal">
+      <div class="modal__inner">
+        <transition name="slide" appear>
+          <div class="modal__container">
+            <section class="modal__header">
+              <slot name="header"></slot>
+            </section>
 
-        <section class="modal__content">
-          <slot name="content"></slot>
-        </section>
+            <section class="modal__content">
+              <slot name="content"></slot>
+            </section>
 
-        <section class="modal__footer">
-          <slot name="footer"></slot>
-        </section>
+            <section class="modal__footer">
+              <slot name="footer"></slot>
+            </section>
 
-        <span class="modal__close" @click="close">X</span>
+            <span class="modal__close" @click="close">X</span>
+          </div>
+        </transition>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -87,5 +91,26 @@ export default {
     padding: 20px 0;
     border-top: 1px solid #c2c2c2;
   }
+}
+
+// Animations
+.fade-enter-active,
+.fade-leave-active {
+  transition: 0.4s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: 0.4s;
+}
+
+.slide-enter,
+.slide-leave-to {
+  transform: rotate(90deg) scale(0.5);
 }
 </style>

@@ -5,6 +5,7 @@
       :key="item.id"
       :item="item"
       @letShowModal="showHideModal"
+      @sendData="appendToEditData"
     />
 
     <modal v-if="showModal" class="store__modal" @close="showHideModal">
@@ -16,23 +17,25 @@
         <form class="modal__content">
           <div class="modal__field">
             <label>Бренд:</label>
-            <input type="text" />
+            <input type="text" v-model="editData.brandName" />
           </div>
 
           <div class="modal__field">
             <label>Модель:</label>
-            <input type="text" />
+            <input type="text" v-model="editData.modelName" />
           </div>
 
           <div class="modal__field">
             <label>Цена:</label>
-            <input type="number" />
+            <input type="number" v-model="editData.price" />
           </div>
         </form>
       </template>
 
       <template v-slot:footer>
-        <button class="pure-material-button-contained">Редактировать</button>
+        <button class="pure-material-button-contained" @click="editInModal">
+          Редактировать
+        </button>
       </template>
     </modal>
   </div>
@@ -46,6 +49,7 @@ export default {
   data() {
     return {
       data: [],
+      editData: {},
       showModal: false,
     };
   },
@@ -53,10 +57,31 @@ export default {
     showHideModal(value) {
       this.showModal = value;
     },
+    appendToEditData(item) {
+      this.editData = item;
+      console.log(item);
+    },
+    editInModal() {
+      this.showHideModal(false);
+      this.sendToServer();
+    },
+    async sendToServer() {
+      await fetch("http://localhost:3003/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(this.data),
+      });
+    },
   },
   async created() {
-    const data = await (await fetch("http://localhost:3003/")).json();
-    this.data = data;
+    try {
+      const data = await (await fetch("http://localhost:3003/")).json();
+      this.data = data;
+    } catch {
+      console.log("Невозможно подключиться к серверу!");
+    }
   },
   components: {
     StoreItem,

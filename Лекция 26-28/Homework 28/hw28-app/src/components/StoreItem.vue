@@ -8,7 +8,10 @@
     <img
       src="../assets/icons/edit-black-18dp.svg"
       class="edit"
-      @click="showModal"
+      @click="
+        showModal();
+        sendData();
+      "
     />
   </div>
 </template>
@@ -27,6 +30,9 @@ export default {
     showModal() {
       this.$emit("letShowModal", true);
     },
+    sendData() {
+      this.$emit("sendData", this.item);
+    },
   },
   computed: {
     price() {
@@ -41,6 +47,10 @@ export default {
 
 <style scoped lang="scss">
 .storeItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: relative;
   box-sizing: border-box;
   width: 23%;
@@ -50,6 +60,7 @@ export default {
   border: 1px solid #c2c2c2;
   border-radius: 3px;
   transition: 0.3s ease-in-out;
+  overflow: hidden;
   &:hover {
     background: #f5f5f5;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -59,6 +70,7 @@ export default {
   &__title {
     font-size: 1.3rem;
     font-weight: 500;
+    width: 60%;
   }
 }
 
@@ -69,6 +81,7 @@ export default {
   border-radius: 3px;
   right: 5px;
   bottom: 5px;
+  transition: 0.5s;
 
   &:hover {
     cursor: pointer;
