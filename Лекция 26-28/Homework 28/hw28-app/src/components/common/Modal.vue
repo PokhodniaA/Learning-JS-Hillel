@@ -104,13 +104,11 @@ export default {
   opacity: 0;
 }
 
-.slide-enter-active,
-.slide-leave-active {
+.slide-enter-active {
   transition: 0.4s;
 }
 
-.slide-enter,
-.slide-leave-to {
+.slide-enter {
   transform: rotate(90deg) scale(0.5);
 }
 </style>
